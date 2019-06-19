@@ -1,5 +1,5 @@
 declare function require(name: string);
-
+import {Modal} from 'boostrap';
 
 export class SampleFormComponent extends HTMLElement {
 
@@ -13,8 +13,11 @@ export class SampleFormComponent extends HTMLElement {
     console.log("hey! someone removed me from the DOM!");
   }
 
-
+  public show() : void {
+    this.getElementsByClassName('modal').modal("show")
+    $('#myModal').modal('show')
+  }
 
 }
 
-customElements.define("f-btn",SampleFormComponent);
+customElements.define("dasshboard",SampleFormComponent);

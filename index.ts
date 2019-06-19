@@ -4,6 +4,7 @@ import './style.css';
 import {SampleFormComponent} from './component/sampleform/sampleform-component'; 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery';
 
 // Write TypeScript code!
 const appDiv: HTMLElement = document.getElementById('app');

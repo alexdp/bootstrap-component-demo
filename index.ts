@@ -9,4 +9,4 @@ const appDiv: HTMLElement = document.getElementById('app');
 //appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
 
 let mainComponent : SampleFormComponent = new SampleFormComponent();
-//appDiv.appendChild(mainComponent);
+appDiv.appendChild(mainComponent);

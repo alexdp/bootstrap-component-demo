@@ -1,5 +1,5 @@
 
-import template from 'sampleform-template.html!text';
+import template from './sampleform-template.html!text';
 
 export class SampleFormComponent {
 
@@ -13,7 +13,7 @@ export class SampleFormComponent {
   }
 
   private init() : void {
-
+    this.parent.innerHTML = template;
   }
 
 }

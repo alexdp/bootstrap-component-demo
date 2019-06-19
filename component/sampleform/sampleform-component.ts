@@ -1,5 +1,4 @@
 
-import template from './sampleform-template.html!text';
 
 export class SampleFormComponent {
 
@@ -13,6 +12,7 @@ export class SampleFormComponent {
   }
 
   private init() : void {
+    const template = require('./sampleform-template.html');
     this.parent.innerHTML = template;
   }
 

@@ -1,19 +1,20 @@
+declare function require(name: string);
 
 
-export class SampleFormComponent {
+export class SampleFormComponent extends HTMLElement {
 
   
-
-  parent : HTMLElement;
-
-  constructor(parent : HTMLElement) {
-    this.parent = parent;
-    this.init();
+  public connectedCallback(): void {
+    this.innerHTML = require('./sampleform-template.html');
+    console.log("A car was added to the DOM");
   }
 
-  private init() : void {
-    const template = require('./sampleform-template.html');
-    this.parent.innerHTML = template;
+  public disconnectedCallback(): void {
+    console.log("hey! someone removed me from the DOM!");
   }
+
+
 
 }
+
+customElements.define("f-btn",SampleFormComponent);

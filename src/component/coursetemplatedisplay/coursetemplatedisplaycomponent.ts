@@ -1,3 +1,5 @@
+declare function require(name: string);
+import $ from 'jquery';
 import {CourseTemplate} from '../../model/coursetemplate';
 
 export class CourseTemplateDisplayComponent {
@@ -9,3 +11,5 @@ export class CourseTemplateDisplayComponent {
   }
 
 }
+
+customElements.define("custom-dashboard",CourseTemplateDisplayComponent);

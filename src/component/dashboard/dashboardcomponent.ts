@@ -2,6 +2,7 @@ declare function require(name: string);
 import $ from 'jquery';
 import {MoodleService} from '../../service/moodleservice';
 import {CourseTemplate} from '../../model/coursetemplate';
+import {CourseTemplateDisplayComponent} from '../coursetemplatedisplay/coursetemplatedisplaycomponent';
 
 export class DashboardComponent extends HTMLElement {
 

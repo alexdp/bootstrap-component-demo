@@ -5,14 +5,23 @@ export class PopupComponent extends HTMLElement {
 
   
   public connectedCallback(): void {
+    let self = this;
     this.innerHTML = require('./popup-template.html');
+    $('#popup-savebutton').click(function() {
+      self.save();
+    });
   }
 
   public disconnectedCallback(): void {
   }
 
-  public show() : void {
-    $('#popup').modal('"show');
+  public show(): void {
+    $('#popup').modal('show');
+  }
+
+  private save(): void {
+    console.log("saed!");
+    $('#popup').modal('hide');
   }
 
 }

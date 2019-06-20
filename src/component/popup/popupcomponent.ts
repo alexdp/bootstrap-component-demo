@@ -1,5 +1,6 @@
 declare function require(name: string);
 import $ from 'jquery';
+import {DashboardComponent} from '../dashboard/dashboardcomponent';
 
 export class PopupComponent extends HTMLElement {
 
@@ -10,6 +11,7 @@ export class PopupComponent extends HTMLElement {
     $('#popup-savebutton').click(function() {
       self.save();
     });
+    this.injectDashboard();
   }
 
   public disconnectedCallback(): void {
@@ -20,8 +22,15 @@ export class PopupComponent extends HTMLElement {
   }
 
   private save(): void {
-    console.log("saed!");
+    console.log("saved!");
     $('#popup').modal('hide');
+  }
+
+  private injectDashboard(): void {
+    let dashboard = new DashboardComponent();
+    let content = $('#popup-content');
+    content.empty();
+    content.append(new DashboardComponent());
   }
 
 }

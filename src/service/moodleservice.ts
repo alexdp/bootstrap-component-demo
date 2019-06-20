@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {CourseTemplate} from '../model/coursetemplate';
+import { CourseTemplate } from '../model/coursetemplate';
 
 export class MoodleService {
 
@@ -9,15 +9,22 @@ export class MoodleService {
   private baseUrl: string = "https://essec-uat.enovation.ie";
   private templateEndPoints: string = `${this.baseUrl}/webservice/rest/server.php?wstoken=${this.token}&wsfunction=local_essecws_getcoursetemplates&moodlewsrestformat=json`;
 
-  public getTemplates(): void {
-    $.ajax({
-      type: 'POST',
-      url: this.templateEndPoints,
-      data: 'parameters[categoryid]=1',
-      dataType: 'json',
-      success: (data) => {
-        console.log(data)
-      }
+  public getTemplates(): Promise<CourseTemplate[]> {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'POST',
+        url: this.templateEndPoints,
+        data: 'parameters[categoryid]=1',
+        dataType: 'json',
+        success: (data) => {
+        }
+      }).done(function (data) {
+        let courses: CourseTemplate[] = data[0]['courses'];
+        console.log(courses[0]);
+        resolve(courses);
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+        reject(new Error(textStatus));
+      });
     });
   }
 

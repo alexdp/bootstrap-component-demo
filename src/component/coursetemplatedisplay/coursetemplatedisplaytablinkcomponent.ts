@@ -2,8 +2,6 @@ declare function require(name: string);
 import $ from 'jquery';
 import {CourseTemplate} from '../../model/coursetemplate';
 
-const HTMLtemplate = (courseTemplate: CourseTemplate) => eval('`' + require('./coursetemplatedisplay-tablink-template.html') + '`');
-
 export class CourseTemplateDisplayTabLinkComponent extends HTMLElement {
 
   private courseTemplate: CourseTemplate;
@@ -14,7 +12,7 @@ export class CourseTemplateDisplayTabLinkComponent extends HTMLElement {
   }
 
   public connectedCallback(): void {
-    this.innerHTML = HTMLtemplate.apply(this.courseTemplate);
+    this.innerHTML = eval('`' + require('./coursetemplatedisplay-tablink-template.html') + '`');
   }
 
   public disconnectedCallback(): void {

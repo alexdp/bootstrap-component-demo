@@ -15,9 +15,7 @@ export class MoodleService {
         type: 'POST',
         url: this.templateEndPoints,
         data: 'parameters[categoryid]=1',
-        dataType: 'json',
-        success: (data) => {
-        }
+        dataType: 'json'
       }).done(function (data) {
         let courses: CourseTemplate[] = data[0]['courses'];
         resolve(courses);

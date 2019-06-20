@@ -1,5 +1,5 @@
 declare function require(name: string);
-import {Modal} from 'boostrap';
+import {Modal} from 'bootstrap';
 
 export class SampleFormComponent extends HTMLElement {
 
@@ -14,10 +14,10 @@ export class SampleFormComponent extends HTMLElement {
   }
 
   public show() : void {
-    this.getElementsByClassName('modal').modal("show")
-    $('#myModal').modal('show')
+    let popup : Modal = <Modal>this.getElementsByClassName('modal');
+    popup.show();
   }
 
 }
 
-customElements.define("dasshboard",SampleFormComponent);
+customElements.define("custom-modal",SampleFormComponent);

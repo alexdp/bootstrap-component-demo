@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import {CourseTemplate} from '../model/coursetemplate';
 
 export class MoodleService {
 

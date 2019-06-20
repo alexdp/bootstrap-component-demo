@@ -1,6 +1,7 @@
 declare function require(name: string);
 import $ from 'jquery';
 import {MoodleService} from '../../service/moodleservice';
+import {CourseTemplate} from '../../model/coursetemplate';
 
 export class DashboardComponent extends HTMLElement {
 
@@ -8,7 +9,10 @@ export class DashboardComponent extends HTMLElement {
   
   public connectedCallback(): void {
     this.innerHTML = require('./dashboard-template.html');
-    this.service.getTemplates();
+    let result = this.service.getTemplates();
+    result.then(function(courseTemplates : CourseTemplate[]) {
+      console.log(courseTemplates);
+    });
   }
 
   public disconnectedCallback(): void {

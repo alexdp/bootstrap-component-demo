@@ -20,7 +20,6 @@ export class MoodleService {
         }
       }).done(function (data) {
         let courses: CourseTemplate[] = data[0]['courses'];
-        console.log(courses[0]);
         resolve(courses);
       }).fail(function (jqXHR, textStatus, errorThrown) {
         reject(new Error(textStatus));

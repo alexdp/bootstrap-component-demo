@@ -1,5 +1,5 @@
 declare function require(name: string);
-import $ from "jquery";
+import $ from 'jquery';
 
 export class PopupComponent extends HTMLElement {
 

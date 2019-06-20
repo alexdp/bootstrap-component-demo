@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/bootstrap": "^4.3.0",
+    "@types/jquery": "^3.3.29",
     "@webcomponents/custom-elements": "^1.2.4",
     "bootstrap": "^4.3.1",
     "jquery": "1.9.1 - 3",

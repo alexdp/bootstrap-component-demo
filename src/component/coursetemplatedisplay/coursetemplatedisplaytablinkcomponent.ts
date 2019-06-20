@@ -2,7 +2,7 @@ declare function require(name: string);
 import $ from 'jquery';
 import {CourseTemplate} from '../../model/coursetemplate';
 
-const HTMLtemplate = (courseTemplate: CourseTemplate) => require('./coursetemplatedisplay-tablink-template.html');
+const HTMLtemplate = (courseTemplate: CourseTemplate) => eval('`' + require('./coursetemplatedisplay-tablink-template.html') + '`');
 
 export class CourseTemplateDisplayTabLinkComponent extends HTMLElement {
 
@@ -22,4 +22,4 @@ export class CourseTemplateDisplayTabLinkComponent extends HTMLElement {
 
 }
 
-customElements.define("custom-coursetemplatedisplay",CourseTemplateDisplayComponent);
+customElements.define("custom-coursetemplatedisplay-tablink",CourseTemplateDisplayTabLinkComponent);

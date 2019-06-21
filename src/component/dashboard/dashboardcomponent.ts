@@ -24,6 +24,9 @@ export class DashboardComponent extends HTMLElement {
         let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
         $('#v-pills-tabContent').append(tabContent);
       }
+      if (courseTemplates.length == 0) {
+        
+      }
     });
     EventUtil.subscribe("custom-event", (e, data) => _self.createCourse());
   }

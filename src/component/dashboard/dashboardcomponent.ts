@@ -11,7 +11,7 @@ export class DashboardComponent extends HTMLElement {
   
   public connectedCallback(): void {
     let _self = this;
-    this.innerHTML = require('./dashboard-template.html');
+    this.outerHTML = require('./dashboard-template.html');
     let result = this.service.getTemplates();
     result.then(function(courseTemplates : CourseTemplate[]) {
       console.log(courseTemplates);

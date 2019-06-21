@@ -9,27 +9,35 @@ import { EventUtil } from '../../service/eventutil';
 export class DashboardComponent extends HTMLElement {
 
   private service : MoodleService = new MoodleService();
+
+  private selectedCourseTemplate: CourseTemplate;
   
   public connectedCallback(): void {
     let _self = this;
     this.outerHTML = require('./dashboard-template.html');
     let result = this.service.getTemplates();
-    let currentCourseTemplate : CourseTemplate;
     result.then(function(courseTemplates : CourseTemplate[]) {
       console.log(courseTemplates);
       for (let aCourseTemplate of courseTemplates) {
-        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate) => currentCourseTemplate = selectedCourseTemplate);
+        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate) => _self.selectedCourseTemplate(selectedCourseTemplate));
         $('#v-pills-tab').append(tabLink);
         let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
         $('#v-pills-tabContent').append(tabContent);
       }
     });
-    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse(currentCourseTemplate));
+    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse());
   }
 
-  private createCourse(selectedCourseTemplate: CourseTemplate): void {
-    console.log(selectedCourseTemplate);
+  private createCourse(): void {
+    if (this.selectedCourseTemplate == undefined) {
+      return;
+    }
+    console.log(this.selectedCourseTemplate );
     $('#popup').modal('hide');
+  }
+
+  private selectCourseTemplate(selectedCourseTemplate: CourseTemplate): void {
+    this.selectedCourseTemplate = se
   }
 
 

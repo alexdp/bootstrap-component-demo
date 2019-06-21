@@ -23,8 +23,13 @@ export class DashboardComponent extends HTMLElement {
         $('#v-pills-tabContent').append(tabContent);
       }
     });
-    EventUtil.subscribe("custom-event", (e, data) => $('#popup').modal('hide'));
+    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse());
   }
+
+  private createCourse(): void {
+    $('#popup').modal('hide');
+  }
+
 
   public disconnectedCallback(): void {
   }

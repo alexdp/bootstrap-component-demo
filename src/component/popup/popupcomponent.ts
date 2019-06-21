@@ -8,7 +8,7 @@ export class PopupComponent extends HTMLElement {
   public connectedCallback(): void {
     let self = this;
     this.outerHTML = require('./popup-template.html');
-    $('#popup-savebutton').click(function() {
+    $('#popup-createbutton').click(function() {
       self.save();
     });
     this.injectDashboard();

@@ -14,19 +14,21 @@ export class DashboardComponent extends HTMLElement {
     let _self = this;
     this.outerHTML = require('./dashboard-template.html');
     let result = this.service.getTemplates();
+    let selectedCourseTemplate : CourseTemplate;
     result.then(function(courseTemplates : CourseTemplate[]) {
       console.log(courseTemplates);
       for (let aCourseTemplate of courseTemplates) {
-        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate);
+        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate:CourseTemplate) => this.selectedCourseTemplate = selectedCourseTemplate);
         $('#v-pills-tab').append(tabLink);
         let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
         $('#v-pills-tabContent').append(tabContent);
       }
     });
-    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse());
+    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse(selectedCourseTemplate));
   }
 
-  private createCourse(): void {
+  private createCourse(selectedCourseTemplate: CourseTemplate): void {
+    console.log(selectedCourseTemplate);
     $('#popup').modal('hide');
   }
 

@@ -1,14 +1,15 @@
 declare function require(name: string);
 import $ from 'jquery';
-import {DashboardComponent} from '../dashboard/dashboardcomponent';
+import { DashboardComponent } from '../dashboard/dashboardcomponent';
+import { EventUtil } from '../../service/eventutil';
 
 export class PopupComponent extends HTMLElement {
 
-  
+
   public connectedCallback(): void {
     let self = this;
     this.outerHTML = require('./popup-template.html');
-    $('#popup-createbutton').click(function() {
+    $('#popup-createbutton').click(function () {
       self.save();
     });
     this.injectDashboard();
@@ -23,7 +24,7 @@ export class PopupComponent extends HTMLElement {
 
   private save(): void {
     console.log("saved!");
-    $('#popup').modal('hide');
+    EventUtil.publish("custom-event", "hi there");
   }
 
   private injectDashboard(): void {
@@ -35,4 +36,4 @@ export class PopupComponent extends HTMLElement {
 
 }
 
-customElements.define("custom-popup",PopupComponent);
+customElements.define("custom-popup", PopupComponent);

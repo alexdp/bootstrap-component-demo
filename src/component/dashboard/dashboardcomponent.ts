@@ -4,6 +4,7 @@ import {MoodleService} from '../../service/moodleservice';
 import {CourseTemplate} from '../../model/coursetemplate';
 import {CourseTemplateDisplayTabLinkComponent} from '../coursetemplatedisplay/coursetemplatedisplaytablinkcomponent';
 import {CourseTemplateDisplayTabContentComponent} from '../coursetemplatedisplay/coursetemplatedisplaytabcontentcomponent';
+import { EventUtil } from '../../service/eventutil';
 
 export class DashboardComponent extends HTMLElement {
 
@@ -22,6 +23,7 @@ export class DashboardComponent extends HTMLElement {
         $('#v-pills-tabContent').append(tabContent);
       }
     });
+    EventUtil.subscribe("custom-event", (e, data) => $('#popup').modal('hide'));
   }
 
   public disconnectedCallback(): void {

@@ -12,7 +12,7 @@ export class CourseTemplateDisplayTabContentComponent extends HTMLElement {
   }
 
   public connectedCallback(): void {
-    this.innerHTML = eval('`' + require('./coursetemplatedisplay-tabcontent-template.html') + '`');
+    this.outerHTML = eval('`' + require('./coursetemplatedisplay-tabcontent-template.html') + '`');
   }
 
   public disconnectedCallback(): void {

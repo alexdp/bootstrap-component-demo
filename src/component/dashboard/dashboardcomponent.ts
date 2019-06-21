@@ -3,6 +3,7 @@ import $ from 'jquery';
 import {MoodleService} from '../../service/moodleservice';
 import {CourseTemplate} from '../../model/coursetemplate';
 import {CourseTemplateDisplayTabLinkComponent} from '../coursetemplatedisplay/coursetemplatedisplaytablinkcomponent';
+import {CourseTemplateDisplayTabContentComponent} from '../coursetemplatedisplay/coursetemplatedisplaytabcontentcomponent';
 
 export class DashboardComponent extends HTMLElement {
 
@@ -16,7 +17,9 @@ export class DashboardComponent extends HTMLElement {
       console.log(courseTemplates);
       for (let aCourseTemplate of courseTemplates) {
         let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate);
-        _self.appendChild(tabLink);
+        $('#v-pills-tab').append(tabLink);
+        let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
+        $('#v-pills-tabContent').append(tabContent);
       }
     });
   }

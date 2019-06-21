@@ -14,9 +14,10 @@ export class MoodleService {
       $.ajax({
         type: 'POST',
         url: this.templateEndPoints,
-        data: 'parameters[categoryid]=2019',
+        data: 'parameters[categoryid]=7',
         dataType: 'json'
       }).done(function (data) {
+        console.log(data);
         let courses: CourseTemplate[] = data[0]['courses'];
         resolve(courses);
       }).fail(function (jqXHR, textStatus, errorThrown) {

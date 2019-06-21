@@ -19,7 +19,7 @@ export class DashboardComponent extends HTMLElement {
     result.then(function(courseTemplates : CourseTemplate[]) {
       console.log(courseTemplates);
       for (let aCourseTemplate of courseTemplates) {
-        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate) => _self.selectedCourseTemplate(selectedCourseTemplate));
+        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate) => _self.selectCourseTemplate(selectedCourseTemplate));
         $('#v-pills-tab').append(tabLink);
         let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
         $('#v-pills-tabContent').append(tabContent);
@@ -37,7 +37,8 @@ export class DashboardComponent extends HTMLElement {
   }
 
   private selectCourseTemplate(selectedCourseTemplate: CourseTemplate): void {
-    this.selectedCourseTemplate = se
+    this.selectedCourseTemplate = selectedCourseTemplate;
+    $('#popup-createbutton').removeAttr("disabled");
   }
 
 

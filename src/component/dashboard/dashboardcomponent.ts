@@ -18,13 +18,13 @@ export class DashboardComponent extends HTMLElement {
     result.then(function(courseTemplates : CourseTemplate[]) {
       console.log(courseTemplates);
       for (let aCourseTemplate of courseTemplates) {
-        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate:CourseTemplate) => currentCourseTemplate = selectedCourseTemplate);
+        let tabLink = new CourseTemplateDisplayTabLinkComponent(aCourseTemplate, (selectedCourseTemplate) => currentCourseTemplate = selectedCourseTemplate);
         $('#v-pills-tab').append(tabLink);
         let tabContent = new CourseTemplateDisplayTabContentComponent(aCourseTemplate);
         $('#v-pills-tabContent').append(tabContent);
       }
     });
-    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse(selectedCourseTemplate));
+    EventUtil.subscribe("custom-event", (e, data) => _self.createCourse(currentCourseTemplate));
   }
 
   private createCourse(selectedCourseTemplate: CourseTemplate): void {
